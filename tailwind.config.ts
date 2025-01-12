@@ -11,8 +11,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        customRed:"#d90429",
       },
     },
   },
+  darkMode:"selector",
   plugins: [],
 } satisfies Config;
