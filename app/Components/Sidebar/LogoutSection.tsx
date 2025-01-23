@@ -5,7 +5,7 @@ import { SignOutButton } from "@clerk/nextjs"
 function LogoutSection(){
     const logOutObject={name:"logout",icon:faRightFromBracket};
     return(
-        <div className="flex gap-2 items-center ml-8 p-2 mt-28 hover:text-customRed transition-all">
+        <div className="flex gap-2 items-center ml-8 p-2 mt-28 hover:text-customRed text-gray-400 transition-all">
             <FontAwesomeIcon width={20} height={20} icon={logOutObject.icon}/>
             <div>
                 <SignOutButton/>           

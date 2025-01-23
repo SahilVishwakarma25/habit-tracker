@@ -1,5 +1,5 @@
 import React from "react";  
-import { useGlobalContexProvider } from "@/app/contextApi";
+import { useGlobalContextProvider } from "@/app/contextApi";
 import { menuItemType } from "@/app/Types/MenuItemType";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; 
 export default function MenuSelection() {
@@ -18,7 +18,7 @@ export default function MenuSelection() {
 }
 
 function SingleMenuItem({ menuItemProp }: { menuItemProp: menuItemType }) {
-  const { menuItemsObject } = useGlobalContextprovider();
+  const { menuItemsObject } = useGlobalContextProvider();
   const {menuItems,setMenuItems}=menuItemsObject;
   function handleClickedItem(){
     const copyMenuItems=menuItems.map((menuItem=>{
@@ -36,7 +36,7 @@ function SingleMenuItem({ menuItemProp }: { menuItemProp: menuItemType }) {
     <div
       onClick={handleClickedItem}
       className={`flex gap-2 items-center p-2 mb-3 ml-8 cursor-pointer rounded-md w-36 ${
-        menuItemProp.isSelected ? "bg-customRed  transition-all text-white" : "hover:text-customRed"
+        menuItemProp.isSelected ? "bg-customRed  transition-all text-white" : "hover:text-customRed text-gray-400"
       }`}
     >
       <FontAwesomeIcon

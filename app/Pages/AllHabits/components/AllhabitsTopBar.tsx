@@ -4,11 +4,14 @@ import DarkMode from "./DarkMode";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { UserButton } from "@clerk/nextjs";
 import { useGlobalContextProvider } from "@/app/contextApi";
-import { useEffect } from "react";
+import { useEffect,useRef } from "react";
+import { darkModeColor, defaultColor } from "@/colors";
 
 
 function AllHabitsTopBar() {
-  const {openSideBarObject}=useGlobalContextProvider;
+  const {openSideBarObject}=useGlobalContextProvider();
+  const {darkModeObject}=useGlobalContextProvider();
+  const {isDarkMode}=darkModeObject;
   const {openSideBar,setOpenSideBar}=openSideBarObject;
   const userButtonAppearance={
     elements:{
@@ -28,22 +31,29 @@ function AllHabitsTopBar() {
     window.addEventListener("resize",handleResize);
     return()=>{
       window.removeEventListener("resize",handleResize)
-    }
+    };
 
   },[]);
     return (
-      <div className="bg-white p-5 rounded-md flex justify-between">
+      <div style={
+        {
+          backgroundColor:isDarkMode? darkModeColor.background:defaultColor.background,
+          
+        }
+      }
+      className="bg-white p-5 rounded-md flex justify-between">
         <div className="flex gap-4">
           <div className="max-lg:flex hidden">
             <UserButton appearance={userButtonAppearance}/>
 
           </div>
         <div className="flex flex-col mx-md:hidden">
-          <span className="text-xl">
-            <span className="font-bold">hi there</span>
-            <span className="font-light">,Sahil</span>
+          <span className="text-xl " >
+            <span className="font-bold ">hi there</span>
+            <span className={"font-[darkModeColor.backgroundS]"}>,Sahil</span>
           </span>
-          <span className="font-light text-[12px text-gray-400]">
+          <span 
+          className="font-light   text-gray-300">
               welcome back
           </span>
         </div>
